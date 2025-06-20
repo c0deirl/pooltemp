@@ -17,8 +17,8 @@ const char* mqtt_pass = "YOUR_MQTT_PASSWORD"; // leave empty if not needed
 
 // Sensor pins
 #define ONE_WIRE_BUS 4  // GPIO where DS18B20 is connected
-#define DHTPIN     5    // GPIO where DHT22 is connected
-#define DHTTYPE    DHT22
+#define DHTPIN 5        // GPIO where DHT22 is connected
+#define DHTTYPE DHT22   // Type of DHT Sensor
 
 // Web server
 AsyncWebServer server(80);
@@ -237,7 +237,7 @@ void setup() {
 }
 
 unsigned long lastSensorRead = 0;
-const unsigned long sensorInterval = 10000; // 10 seconds
+const unsigned long sensorInterval = 6000; // 6 seconds
 
 void loop() {
   if (!client.connected()) {
