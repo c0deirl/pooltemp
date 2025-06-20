@@ -38,6 +38,8 @@ PubSubClient client(espClient);
 float dsTemp = 0.0;
 float dhtTemp = 0.0;
 float dhtHum = 0.0;
+float waterTempF = 0.0;
+float airTempF = 0.0;
 
 // MQTT Topics
 const char* topic_ds18b20 = "home/pooltemp/ds18b20";
@@ -131,7 +133,7 @@ String htmlPage() {
         <span class="sensor-unit">%</span>
       </div>
       <div class="footer">
-        Updated every 5 seconds &mdash; Powered by ESP32
+        Updated every 5 seconds &mdash; Copyright 2025 - <a hred="https://github.com/C0deirl"> c0deirl</a>
       </div>
     </div>
   </body>
@@ -139,8 +141,8 @@ String htmlPage() {
   )rawliteral";
 
   // Replace placeholders with sensor values
-  page.replace("%DS18B20_TEMP%", String(dsTemp, 2));
-  page.replace("%DHT22_TEMP%", String(dhtTemp, 2));
+  page.replace("%DS18B20_TEMP%", String(waterTempF, 2));
+  page.replace("%DHT22_TEMP%", String(airTempF, 2));
   page.replace("%DHT22_HUM%", String(dhtHum, 2));
   return page;
 }
@@ -181,8 +183,8 @@ void publishMQTT() {
   }
   client.loop();
   // Publish sensor values
-  client.publish(topic_ds18b20, String(dsTemp, 2).c_str(), true);
-  client.publish(topic_dht22_temp, String(dhtTemp, 2).c_str(), true);
+  client.publish(topic_ds18b20, String(waterTempF, 2).c_str(), true);
+  client.publish(topic_dht22_temp, String(airTempF, 2).c_str(), true);
   client.publish(topic_dht22_hum, String(dhtHum, 2).c_str(), true);
 }
 
@@ -196,6 +198,10 @@ void readSensors() {
   if (isnan(dsTemp)) dsTemp = -127.0;
   if (isnan(dhtTemp)) dhtTemp = -127.0;
   if (isnan(dhtHum)) dhtHum = -1.0;
+
+  // Farenheit Conversion
+    waterTempF = dhtTemp * (9/5) + 32;
+    airTempF = dhtTemp * (9/5) + 32;
 }
 
 void setup() {
