@@ -9,3 +9,7 @@ Using MQTT to send the data back to Home Assistant
 ESP32 DevKit  
 DS18B20 Water Temperature Sensor  
 DH22 Temperature and Humidity sensor  
+
+## Wiring
+
+## Pictures
