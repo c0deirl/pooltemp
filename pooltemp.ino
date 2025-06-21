@@ -200,8 +200,8 @@ void readSensors() {
   if (isnan(dhtHum)) dhtHum = -1.0;
 
   // Farenheit Conversion
-    waterTempF = dhtTemp * (9/5) + 32;
-    airTempF = dhtTemp * (9/5) + 32;
+    waterTempF = dhtTemp * 1.8 + 32;
+    airTempF = dhtTemp * 1.8 + 32;
 }
 
 void setup() {
