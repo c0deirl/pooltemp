@@ -11,5 +11,6 @@ DS18B20 Water Temperature Sensor
 DH22 Temperature and Humidity sensor  
 
 ## Wiring
+![temp](https://github.com/user-attachments/assets/be3952eb-cb16-4c41-a3d4-d4c3f2f3a4d2)
 
 ## Pictures
