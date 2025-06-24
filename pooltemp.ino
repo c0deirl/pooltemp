@@ -6,14 +6,14 @@
 #include <PubSubClient.h>
 
 // WiFi credentials
-const char* ssid = "N8MDG";
-const char* password = "mattg123";
+const char* ssid = "SSID HERE";
+const char* password = "PASSWORD HERE";
 
 // MQTT Broker settings
 const char* mqtt_server = "192.168.1.71";
 const int mqtt_port = 1883;
-const char* mqtt_user = "dryer"; // leave empty if not needed
-const char* mqtt_pass = "test"; // leave empty if not needed
+const char* mqtt_user = "USERNAME"; // leave empty if not needed
+const char* mqtt_pass = "PASSWORD"; // leave empty if not needed
 
 // Sensor pins
 #define ONE_WIRE_BUS 4  // GPIO where DS18B20 is connected
