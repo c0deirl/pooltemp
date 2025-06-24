@@ -6,14 +6,14 @@
 #include <PubSubClient.h>
 
 // WiFi credentials
-const char* ssid = "YOUR_WIFI_SSID";
-const char* password = "YOUR_WIFI_PASSWORD";
+const char* ssid = "N8MDG";
+const char* password = "mattg123";
 
 // MQTT Broker settings
-const char* mqtt_server = "YOUR_MQTT_BROKER_IP";
+const char* mqtt_server = "192.168.1.71";
 const int mqtt_port = 1883;
-const char* mqtt_user = "YOUR_MQTT_USERNAME"; // leave empty if not needed
-const char* mqtt_pass = "YOUR_MQTT_PASSWORD"; // leave empty if not needed
+const char* mqtt_user = "dryer"; // leave empty if not needed
+const char* mqtt_pass = "test"; // leave empty if not needed
 
 // Sensor pins
 #define ONE_WIRE_BUS 4  // GPIO where DS18B20 is connected
@@ -116,19 +116,19 @@ String htmlPage() {
   </head>
   <body>
     <div class="container">
-      <h1>🏊 Pool Temperature Monitor</h1>
+      <h1>Pool Temperature Monitor</h1>
       <div class="sensor-card">
-        <div class="sensor-label">Water Temp (DS18B20)</div>
+        <div class="sensor-label">Water Temp</div>
         <div class="sensor-value">%DS18B20_TEMP%</div>
-        <span class="sensor-unit">°C</span>
+        <span class="sensor-unit">F</span>
       </div>
       <div class="sensor-card">
-        <div class="sensor-label">Air Temp (DHT22)</div>
+        <div class="sensor-label">Air Temp</div>
         <div class="sensor-value">%DHT22_TEMP%</div>
-        <span class="sensor-unit">°C</span>
+        <span class="sensor-unit">F</span>
       </div>
       <div class="sensor-card">
-        <div class="sensor-label">Humidity (DHT22)</div>
+        <div class="sensor-label">Humidity</div>
         <div class="sensor-value">%DHT22_HUM%</div>
         <span class="sensor-unit">%</span>
       </div>
@@ -200,8 +200,8 @@ void readSensors() {
   if (isnan(dhtHum)) dhtHum = -1.0;
 
   // Farenheit Conversion
-    waterTempF = dhtTemp * 1.8 + 32;
-    airTempF = dhtTemp * 1.8 + 32;
+    waterTempF = ((dsTemp * 1.8) + 32);
+    airTempF = ((dhtTemp * 1.8) + 32);
 }
 
 void setup() {
